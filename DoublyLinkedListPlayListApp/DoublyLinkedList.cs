@@ -25,6 +25,8 @@ namespace DoublyLinkedListPlayListApp
             DoubleNode lastNode = GetLastNode(doubleLinkedList);
             lastNode.next = newNode;
             newNode.prev = lastNode;
+            newNode.next = doubleLinkedList.head;
+            doubleLinkedList.head.prev = newNode;
             Count++;
         }
         internal void InsertAfter(DoubleNode prev_node, Track track)
@@ -71,11 +73,10 @@ namespace DoublyLinkedListPlayListApp
                 temp = temp.next;
             }
 
-            //THIS IS FOR SINGLE LINKED LIST.
-            //if (temp != null)
-            //{
-            //    doubleNode = doubleLinkedList.head;
-            //}
+            if (temp != null)
+            {
+                doubleNode = doubleLinkedList.head;
+            }
             return doubleNode.track.TrackName.ToString();
         }
 
@@ -104,7 +105,20 @@ namespace DoublyLinkedListPlayListApp
             
             while (temp != null && !temp.track.TrackName.Equals(name))
             {
-                temp = temp.next;
+                if (temp.next == doubleLinkedList.head)
+                {
+                    temp.prev.next = doubleLinkedList.head;
+                }
+                
+                if( doubleLinkedList.head.prev == temp)
+                {
+                    doubleLinkedList.head.prev = temp.prev;
+
+                }
+                if(!(temp.next == doubleLinkedList.head) && !(doubleLinkedList.head.prev == temp))
+                {
+                    temp = temp.next;
+                }
 
             }
 
