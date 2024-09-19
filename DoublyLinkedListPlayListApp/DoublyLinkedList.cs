@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace DoublyLinkedListPlayListApp
-{
+{//Code Attribution
+ //This code was adapted from C# Corner
+ //https://www.c-sharpcorner.com/article/linked-list-implementation-in-c-sharp/
+ //Ankit Sharma
+ //https://www.c-sharpcorner.com/members/ankit-sharma93
     internal class DoublyLinkedList
     {
         internal DoubleNode head;
